@@ -4,7 +4,7 @@ awk 'BEGIN{FS="|";OFS=",";} $1=="zh_CN"{print $2,$3}' regions.txt |  awk 'BEGIN{
 awk 'BEGIN{FS="|";OFS=",";} $1=="zh_CN"{print $2,$3}' regions.txt |  awk 'BEGIN{FS="_";OFS=","} {print $1,$2,$3,$4}' | awk 'BEGIN{FS=",";OFS=","} $4==""&&$3!=""{print $1,$2,$3}'  > regions_zh_state.csv  
 awk 'BEGIN{FS="|";OFS=",";} $1=="zh_CN"{print $2,$3}' regions.txt |  awk 'BEGIN{FS="_";OFS=","} {print $1,$2,$3,$4}' | awk 'BEGIN{FS=",";OFS=","} $3==""{print $1,$2}'  > regions_zh_country.csv  
 
-conn="mysql -h192.168.15.81 -uroot -proot"
+conn="mysql -h127.0.0.1 -uroot -proot"
 
 ## 先插入有城市
 cat /dev/null >tbl_city.sql
@@ -87,7 +87,6 @@ awk 'BEGIN{FS="|";OFS=",";} $1=="zh_TW"{print $2,$3}' regions.txt |  awk 'BEGIN{
 awk 'BEGIN{FS="|";OFS=",";} $1=="zh_TW"{print $2,$3}' regions.txt |  awk 'BEGIN{FS="_";OFS=","} {print $1,$2,$3,$4}' | awk 'BEGIN{FS=",";OFS=","} $4==""&&$3!=""{print $1,$2,$3}'  > regions_tw_state.csv  
 awk 'BEGIN{FS="|";OFS=",";} $1=="zh_TW"{print $2,$3}' regions.txt |  awk 'BEGIN{FS="_";OFS=","} {print $1,$2,$3,$4}' | awk 'BEGIN{FS=",";OFS=","} $3==""{print $1,$2}'  > regions_tw_country.csv  
 
-conn="mysql -h192.168.15.81 -uroot -proot"
 
 while read line
 do
@@ -112,7 +111,6 @@ done < regions_tw_country.csv
 ################################################# en ##################################################
 awk 'BEGIN{FS="|";OFS=",";} $1=="en"{print $2,$3}' regions.txt |  awk 'BEGIN{FS="_";OFS=","} {print $1,$2,$3,$4}' | awk 'BEGIN{FS=",";OFS=","} $3==""{print $1,$2}'  > regions_en_country.csv  
 
-conn="mysql -h192.168.15.81 -uroot -proot"
 
 while read line
 do
